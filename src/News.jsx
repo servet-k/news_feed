@@ -3,7 +3,7 @@ import bbc from "../json/bbc.json"
 import cezire from "../json/cezire.json"
 import sun from "../json/sun.json"
 import Card from './Card'
-import aa from "./haber.json"
+import aa from "../json/haber.json"
 import daily from "../json/daily.json"
 import mirror from "../json/mirror.json"
 import express from "../json/express.json"

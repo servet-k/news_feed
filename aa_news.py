@@ -82,5 +82,5 @@ data=haber_dict(feed)
 
 json_string=json.dumps(data,indent=4,ensure_ascii=False)
 
-with open("e:/react/aa-news/src/haber.json","w") as f:
+with open("e:/react/aa-news/json/haber.json","w") as f:
     f.write(json_string,)
