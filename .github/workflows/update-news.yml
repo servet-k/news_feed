@@ -1,0 +1,23 @@
+name: Update News Feed
+on:
+  schedule:
+    - cron: '0 * * * *' # Her saat başı çalışır
+  workflow_dispatch: # Manuel tetikleme
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # Senin Python sürümün
+      - name: Install dependencies
+        run: pip install feedparser beautifulsoup4 requests
+      - name: Run script
+        run: python script.py # Python script’inin adını güncelle
+      - name: Deploy to Netlify
+        run: npm install -g netlify-cli && netlify deploy --prod --dir=public
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
