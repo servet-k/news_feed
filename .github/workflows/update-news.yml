@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.10.7' # Senin Python sürümün
       - name: Install dependencies
-        run: pip install feedparser beautifulsoup4 requests lxml os json
+        run: pip install feedparser beautifulsoup4 requests lxml
       - name: Run aa_news
         run: python aa_news.py 
       - name: Run science
