@@ -1,7 +1,7 @@
 name: Update News Feed
 on:
   schedule:
-    - cron: '0 * * * *' # Her saat başı çalışır
+    - cron: '*/5 * * * *' # Her saat başı çalışır
   workflow_dispatch: # Manuel tetikleme
 jobs:
   update:
