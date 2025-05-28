@@ -35,7 +35,7 @@ jobs:
       - name: Install Netlify CLI
         run: npm install -g netlify-cli@latest # En son sürümü yükle
       - name: Deploy to Netlify
-        run: netlify deploy --prod --dir dist --skip-build # Tekrar dene
+        run: netlify deploy --prod --dir dist  # Tekrar dene
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
