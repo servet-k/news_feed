@@ -1,6 +1,17 @@
 
 from get_feed import get_feed
 import json
+import os
+
+
+
+output_dir = os.path.join(os.path.dirname(__file__), "json")
+output_file = os.path.join(output_dir, "ensonhaber.json")
+
+# Ensure the directory exists
+os.makedirs(output_dir, exist_ok=True)
+
+
 url="https://www.ensonhaber.com/rss/ensonhaber.xml"
 
 haber=get_feed(url)
@@ -19,5 +30,5 @@ for data in haber:
 
 json_string=json.dumps(haber,indent=4,ensure_ascii=False)
 
-with open("e:/react/aa-news/json/ensonhaber.json","w") as f:
+with open(output_file,"w") as f:
     f.write(json_string)

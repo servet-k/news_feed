@@ -1,9 +1,16 @@
 import feedparser
-import json
+import json 
+import os
 
 #to get image link, use beautifulsoup
 from bs4 import BeautifulSoup
 import requests,lxml
+
+output_dir = os.path.join(os.path.dirname(__file__), "json")
+output_file = os.path.join(output_dir, "haber.json")
+
+# Ensure the directory exists
+os.makedirs(output_dir, exist_ok=True)
 
 
 
@@ -82,5 +89,5 @@ data=haber_dict(feed)
 
 json_string=json.dumps(data,indent=4,ensure_ascii=False)
 
-with open("e:/react/aa-news/json/haber.json","w") as f:
+with open(output_file,"w") as f:
     f.write(json_string,)
