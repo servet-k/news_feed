@@ -28,10 +28,14 @@ jobs:
           node-version: '18' # Netlify ile uyumlu
       - name: Install Node.js dependencies
         run: npm install
+      - name: Verify vite installation
+        run: npx vite --version # vite'in yüklendiğini kontrol et
       - name: Build
         run: npm run build
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
       - name: Deploy to Netlify
-        run: npm install -g netlify-cli && netlify deploy --prod --dir dist
+        run: netlify deploy --prod --dir dist --skip-build # Netlify'nin build adımını atla
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
