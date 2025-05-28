@@ -1,5 +1,19 @@
 [
     {
+        "time": "Wed, 28 May 2025 18:51:00 +0100",
+        "title": "Holiday hotspot loved by Brits in Spain about to be flooded by American tourists",
+        "content": "A surge in tourists from the US are to arrive in Majorca this summer.",
+        "link": "https://www.express.co.uk/news/world/2061344/holiday-hotspot-loved-brits-spain",
+        "img": "https://cdn.images.express.co.uk/img/dynamic/78/237x141/2061344_1.jpg"
+    },
+    {
+        "time": "Wed, 28 May 2025 18:47:00 +0100",
+        "title": "Tourists warned they face £210 fines for reserving sunbeds in Spain",
+        "content": "Council leaders have announced police will be empowered to combat those trying to reserve the prized spots.",
+        "link": "https://www.express.co.uk/news/world/2061331/tourists-fines-210-sunbeds-spain",
+        "img": "https://cdn.images.express.co.uk/img/dynamic/78/237x141/2061331_1.jpg"
+    },
+    {
         "time": "Wed, 28 May 2025 16:49:00 +0100",
         "title": "Kremlin issue major update on Putin's meeting with Zelensky for Ukraine peace talks",
         "content": "Zelensky has said Ukraine is ready to hold peace talks at the highest level, including a trilateral meeting with himself, Russian President Vladimir Putin and US President Donald Trump.",
@@ -54,19 +68,5 @@
         "content": "A video posted to social media channels shows a massive queue of passengers outside one of the capital's airports.",
         "link": "https://www.express.co.uk/news/world/2061169/russia-travel-chaos-airports-moscow",
         "img": "https://cdn.images.express.co.uk/img/dynamic/78/237x141/2061169_1.jpg"
-    },
-    {
-        "time": "Wed, 28 May 2025 13:31:00 +0100",
-        "title": "Putin told he's made one of the 'biggest strategic and tactical mistake in history'",
-        "content": "Finnish President Alexander Stubb says Russian counterpart catastrophically underestimated the might of Ukraine's military",
-        "link": "https://www.express.co.uk/news/world/2061159/president-finland-putin-mistake",
-        "img": "https://cdn.images.express.co.uk/img/dynamic/78/237x141/2061159_1.jpg"
-    },
-    {
-        "time": "Wed, 28 May 2025 15:37:00 +0100",
-        "title": "Major airport grounds ALL FLIGHTS as massive thunderstorm causes travel chaos",
-        "content": "Thunderstorms are said to be responsible for the move that will cause travel chaos.",
-        "link": "https://www.express.co.uk/news/world/2061155/dallas-fort-worth-international-flights",
-        "img": "https://cdn.images.express.co.uk/img/dynamic/78/237x141/2061155_1.jpg"
     }
 ]

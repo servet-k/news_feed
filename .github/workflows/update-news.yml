@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10.7' # Senin Python sürümün
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install feedparser beautifulsoup4 requests lxml
       - name: Run aa_news
         run: python aa_news.py 
@@ -22,7 +22,14 @@ jobs:
         run: python ensonhaber.py 
       - name: Run news      
         run: python news.py
-      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Netlify ile uyumlu
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
       - name: Deploy to Netlify
         run: npm install -g netlify-cli && netlify deploy --prod --dir dist
         env:

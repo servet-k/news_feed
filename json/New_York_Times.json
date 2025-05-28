@@ -1,6 +1,6 @@
 [
     {
-        "time": "Wed, 28 May 2025 16:19:22 +0000",
+        "time": "Wed, 28 May 2025 17:57:20 +0000",
         "title": "Merz Says Germany Will Step Up Ukraine Weapons Support as Zelensky Visits",
         "content": "In the latest sign of a warming relationship, President Volodymyr Zelensky met in Berlin with Chancellor Friedrich Merz, who said Germany would increase funding for arms production and supplies.",
         "link": "https://www.nytimes.com/2025/05/28/world/europe/zelensky-merz-berlin-visit.html",
@@ -21,11 +21,18 @@
         "img": "https://static01.nyt.com/images/2025/05/28/multimedia/28int-israel-yemen-gjqt/28int-israel-yemen-gjqt-mediumSquareAt3X.jpg"
     },
     {
-        "time": "Wed, 28 May 2025 15:26:31 +0000",
+        "time": "Wed, 28 May 2025 18:13:26 +0000",
         "title": "Joël Le Scouarnec, French Doctor Who Molested Hundreds of Children, Is Sentenced",
         "content": "A former surgeon had confessed to abusing at least 299 people, mostly children, in what is considered the largest case of its kind in French history.",
         "link": "https://www.nytimes.com/2025/05/28/joel-le-scouarnec-france-doctor-abuse-sentence.html",
         "img": "https://static01.nyt.com/images/2025/05/27/multimedia/27france-surgeon-abuse-1-fvwq/27france-surgeon-abuse-1-fvwq-mediumSquareAt3X.jpg"
+    },
+    {
+        "time": "Wed, 28 May 2025 18:34:34 +0000",
+        "title": "UK Authorizes Rape and Human Trafficking Charges Against Andrew and Tristan Tate",
+        "content": "The charges include allegations of human trafficking and assault, and come after a separate criminal inquiry in Romania.",
+        "link": "https://www.nytimes.com/2025/05/28/world/europe/andrew-tate-brothers-rape-trafficking-charges.html",
+        "img": "https://static01.nyt.com/images/2025/05/28/multimedia/28int-uk-tate-charges-qfvw/28int-uk-tate-charges-qfvw-mediumSquareAt3X.jpg"
     },
     {
         "time": "Wed, 28 May 2025 16:46:05 +0000",
@@ -42,14 +49,14 @@
         "img": "https://static01.nyt.com/images/2025/05/19/multimedia/2025-05-19-gaza-israel-may-operation-index/2025-05-19-gaza-israel-may-operation-index-mediumSquareAt3X.jpg"
     },
     {
-        "time": "Wed, 28 May 2025 09:00:58 +0000",
+        "time": "Wed, 28 May 2025 09:00:59 +0000",
         "title": "Stalin’s Image Returns to Moscow’s Subway, Honoring a Brutal History",
         "content": "The Kremlin has increasingly embraced the Soviet dictator and his legacy, using them to exalt Russian history in a time of war, but he remains a deeply divisive figure in Russia.",
         "link": "https://www.nytimes.com/2025/05/28/world/europe/stalin-image-moscow-subway.html",
         "img": "https://static01.nyt.com/images/2025/05/22/multimedia/00int-Russia-Stalin-subway-jkvb/00int-Russia-Stalin-subway-jkvb-mediumSquareAt3X.jpg"
     },
     {
-        "time": "Wed, 28 May 2025 16:07:23 +0000",
+        "time": "Wed, 28 May 2025 17:40:31 +0000",
         "title": "U.N. Condemns Israel’s New Aid Program in Gaza, After Chaotic Start",
         "content": "The new operation is intended to bypass both the United Nations and Hamas, but aid groups say even if it works as intended, it is dangerously inadequate.",
         "link": "https://www.nytimes.com/2025/05/28/world/middleeast/israel-un-aid-gaza.html",
@@ -91,14 +98,7 @@
         "img": "https://static01.nyt.com/images/2025/05/27/multimedia/27gaza-ceasefire-01-lwhv/27gaza-ceasefire-01-lwhv-mediumSquareAt3X.jpg"
     },
     {
-        "time": "Tue, 27 May 2025 23:25:24 +0000",
-        "title": "Police Quickly Gave Details on Liverpool Car Ramming, Aiming to Prevent Rumors",
-        "content": "Just hours after the episode, the police announced that the driver was a white British man. After previous violence, false anti-Muslim speculation had been spread online.",
-        "link": "https://www.nytimes.com/2025/05/27/world/europe/uk-liverpool-parade-police-suspect.html",
-        "img": "https://static01.nyt.com/images/2025/05/27/multimedia/27int-uk-liverpool-police-01-pctg/27int-uk-liverpool-police-01-pctg-mediumSquareAt3X.jpg"
-    },
-    {
-        "time": "Wed, 28 May 2025 14:05:13 +0000",
+        "time": "Wed, 28 May 2025 17:35:14 +0000",
         "title": "Japan Welcomes a New Sumo Champ. Surprise: He’s Japanese.",
         "content": "Onosato Daiki became the first Japanese man in eight years to be named a yokozuna, or grand champion, the highest title in the sport.",
         "link": "https://www.nytimes.com/2025/05/28/world/asia/sumo-yokozuna-onosato-daiki-japan.html",
@@ -119,7 +119,7 @@
         "img": "https://static01.nyt.com/images/2025/05/27/multimedia/28ambriefing-europe-nl-gaza/28ambriefing-europe-nl-gaza-mediumSquareAt3X.jpg"
     },
     {
-        "time": "Wed, 28 May 2025 12:48:58 +0000",
+        "time": "Wed, 28 May 2025 18:19:05 +0000",
         "title": "As Trump Seeks Iran Deal, Israel Again Raises Possible Strikes on Nuclear Sites",
         "content": "Prime Minister Benjamin Netanyahu, wary of a diplomatic solution to curbing Iran’s nuclear program, continues to press for military action that would upend President Trump’s push for a negotiated deal.",
         "link": "https://www.nytimes.com/2025/05/28/us/politics/trump-iran-nuclear-deal-israel.html",
@@ -229,6 +229,13 @@
         "content": "In early May, Immigration and Customs Enforcement agents were spotted alongside Tennessee State Highway Patrol troopers in areas of Nashville, partnering up for a weeklong operation that turned routine traffic stops into immigration arrests.",
         "link": "https://www.nytimes.com/video/world/americas/100000010163668/ice-state-troopers-nashville.html",
         "img": ""
+    },
+    {
+        "time": "Tue, 27 May 2025 23:25:24 +0000",
+        "title": "Police Quickly Gave Details on Liverpool Car Ramming, Aiming to Prevent Rumors",
+        "content": "Just hours after the episode, the police announced that the driver was a white British man. After previous violence, false anti-Muslim speculation had been spread online.",
+        "link": "https://www.nytimes.com/2025/05/27/world/europe/uk-liverpool-parade-police-suspect.html",
+        "img": "https://static01.nyt.com/images/2025/05/27/multimedia/27int-uk-liverpool-police-01-pctg/27int-uk-liverpool-police-01-pctg-mediumSquareAt3X.jpg"
     },
     {
         "time": "Tue, 27 May 2025 16:22:37 +0000",
@@ -390,12 +397,5 @@
         "content": "Plus, Mexico City’s artistic eras.",
         "link": "https://www.nytimes.com/2025/05/25/briefing/russia-attacks-ukraine-venezuela-guyana-trump-vietnam.html",
         "img": "https://static01.nyt.com/images/2025/05/26/multimedia/26ambriefing-asia-ukraine1-czfw/26ambriefing-asia-ukraine1-czfw-mediumSquareAt3X.jpg"
-    },
-    {
-        "time": "Sun, 25 May 2025 20:46:11 +0000",
-        "title": "A Quiet Funeral in Israel for Victim of Washington Shooting",
-        "content": "Yaron Lischinsky, 30, was buried on Sunday in the small town where his family lived.",
-        "link": "https://www.nytimes.com/2025/05/25/world/middleeast/israel-funeral-dc-shooting.html",
-        "img": "https://static01.nyt.com/images/2025/05/25/multimedia/25int-israel-funeral01-photo-kjtw/25int-israel-funeral01-photo-kjtw-mediumSquareAt3X.jpg"
     }
 ]

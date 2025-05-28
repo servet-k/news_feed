@@ -1,5 +1,19 @@
 [
     {
+        "time": "Wed, 28 May 2025 13:18:22 EDT",
+        "title": "Scientists contribute to uncovering ongoing surface modification on Jupiter's moon Europa",
+        "content": "A series of experiments support spectral data recently collected by the James Webb Space Telescope that found evidence that the icy surface of Jupiter's moon Europa is constantly changing. Europa's surface ice is crystallizing at different rates in different places, which could point to a complex mix of external processes and geologic activity affecting the surface.",
+        "link": "https://www.sciencedaily.com/releases/2025/05/250528131822.htm",
+        "img": ""
+    },
+    {
+        "time": "Wed, 28 May 2025 13:16:50 EDT",
+        "title": "Observing one-dimensional anyons: Exotic quasiparticles in the coldest corners of the universe",
+        "content": "Scientists have observed anyons -- quasiparticles that differ from the familiar fermions and bosons -- in a one-dimensional quantum system for the first time. The results may contribute to a better understanding of quantum matter and its potential applications.",
+        "link": "https://www.sciencedaily.com/releases/2025/05/250528131650.htm",
+        "img": ""
+    },
+    {
         "time": "Tue, 27 May 2025 18:09:32 EDT",
         "title": "Zika virus uses cells' 'self-care' system to turn against host",
         "content": "A new study reveals the biological secret to the Zika virus's infectious success: Zika uses host cells' own 'self-care' system of clearing away useless molecules to suppress the host proteins that the virus has employed to get into those cells in the first place.",
@@ -179,6 +193,13 @@
         "title": "New fuel cell could enable electric aviation",
         "content": "Engineers developed a fuel cell that offers more than three times as much energy per pound compared to lithium-ion batteries. Powered by a reaction between sodium metal and air, the device could be lightweight enough to enable the electrification of airplanes, trucks, or ships.",
         "link": "https://www.sciencedaily.com/releases/2025/05/250527124115.htm",
+        "img": ""
+    },
+    {
+        "time": "Tue, 27 May 2025 12:41:10 EDT",
+        "title": "Oldest whale bone tools discovered",
+        "content": "Humans were making tools from whale bones as far back as 20,000 years ago, according to a new study. This discovery broadens our understanding of early human use of whale remains and offers valuable insight into the marine ecology of the time.",
+        "link": "https://www.sciencedaily.com/releases/2025/05/250527124110.htm",
         "img": ""
     },
     {
@@ -396,27 +417,6 @@
         "title": "A faster, more reliable method for simulating the plasmas used to make computer chips",
         "content": "Researchers developed a faster, more stable way to simulate the swirling electric fields inside industrial plasmas -- the kind used to make microchips and coat materials. The improved method could lead to better tools for chip manufacturing and fusion research.",
         "link": "https://www.sciencedaily.com/releases/2025/05/250522162711.htm",
-        "img": ""
-    },
-    {
-        "time": "Thu, 22 May 2025 16:27:03 EDT",
-        "title": "The scent of death? Worms experience altered fertility and lifespan when exposed to dead counterparts",
-        "content": "Research reveals that for C. elegans worms, the presence of dead members of their species has profound behavioral and physiological effects, leading them to more quickly reproduce and shortening their lifespans.",
-        "link": "https://www.sciencedaily.com/releases/2025/05/250522162703.htm",
-        "img": ""
-    },
-    {
-        "time": "Thu, 22 May 2025 16:27:00 EDT",
-        "title": "New study reveals how competition between algae is transforming the Gulf of Maine",
-        "content": "New research shows how rapidly proliferating turf algae are waging 'chemical warfare' to inhibit the recovery of kelp forests along Maine's warming coast.",
-        "link": "https://www.sciencedaily.com/releases/2025/05/250522162700.htm",
-        "img": ""
-    },
-    {
-        "time": "Thu, 22 May 2025 16:26:58 EDT",
-        "title": "An artificial protein that moves like something found in nature",
-        "content": "Proteins catalyze life by changing shape when they interact with other molecules. The result is a muscle twitching, the perception of light, or a bit of energy extracted from food. The ability to engineer shapeshifting proteins opens new avenues for medicine, agriculture, and beyond.",
-        "link": "https://www.sciencedaily.com/releases/2025/05/250522162658.htm",
         "img": ""
     }
 ]
