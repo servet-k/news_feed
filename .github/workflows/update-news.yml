@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Install Netlify CLI
-        run: npm install -g netlify-cli@latest # En son sürümü yükle
+        run: npm install -g netlify-cli # En son sürümü yükle
       - name: Deploy to Netlify
         run: netlify deploy --prod --dir dist  # Tekrar dene
         env:
