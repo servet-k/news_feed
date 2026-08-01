@@ -30,5 +30,5 @@ for data in haber:
 
 json_string=json.dumps(haber,indent=4,ensure_ascii=False)
 
-with open(output_file,"w") as f:
+with open(output_file,"w",encoding="utf-8") as f:
     f.write(json_string)
