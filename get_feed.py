@@ -1,25 +1,25 @@
 import feedparser
-import requests
+import cloudscraper
 
 def get_feed(url):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "application/rss+xml, application/xml, text/xml, */*",
-        "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Referer": "https://www.ensonhaber.com/"
-    }
+    scraper = cloudscraper.create_scraper(
+        browser={
+            'browser': 'chrome',
+            'platform': 'windows',
+            'mobile': False
+        }
+    )
 
     try:
-        response = requests.get(url, headers=headers, timeout=20)
+        response = scraper.get(url, timeout=25)
         response.raise_for_status()
         feed = feedparser.parse(response.content)
     except Exception as e:
         print(f"Feed çekme hatası ({url}): {e}")
         return []
 
-    # Debug için (Actions log'unda göreceksin)
     print(f"URL: {url}")
-    print(f"Status: {getattr(response, 'status_code', 'N/A')}")
+    print(f"Status: {response.status_code}")
     print(f"Bozo: {feed.bozo}")
     if feed.bozo:
         print(f"Bozo Exception: {feed.bozo_exception}")
@@ -27,19 +27,15 @@ def get_feed(url):
 
     haber_list = []
     for entry in feed.entries:
-        # Zaman
         time = getattr(entry, "updated", None) or getattr(entry, "published", None) or ""
-        
-        # Başlık
         title = getattr(entry, "title", "") or ""
-        
-        # İçerik
-        content = getattr(entry, "description", None) or getattr(entry, "summary", None) or getattr(entry, "content", [{}])[0].get("value", "") if getattr(entry, "content", None) else ""
-        
-        # Link
+        content = (
+            getattr(entry, "description", None)
+            or getattr(entry, "summary", None)
+            or (getattr(entry, "content", [{}])[0].get("value", "") if getattr(entry, "content", None) else "")
+        )
         link = getattr(entry, "link", "") or ""
-        
-        # Resim (daha sağlam kontrol)
+
         img = ""
         if hasattr(entry, "media_thumbnail") and entry.media_thumbnail:
             img = entry.media_thumbnail[0].get("url", "")
@@ -47,9 +43,6 @@ def get_feed(url):
             img = entry.media_content[0].get("url", "")
         elif hasattr(entry, "enclosures") and entry.enclosures:
             img = entry.enclosures[0].get("href", "") or entry.enclosures[0].get("url", "")
-        # Bazı feedlerde image alanı farklı yerde olabilir
-        elif hasattr(entry, "image") and isinstance(entry.image, dict):
-            img = entry.image.get("href", "") or entry.image.get("url", "")
 
         data = {
             "time": time,
