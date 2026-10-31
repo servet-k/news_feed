@@ -3,19 +3,20 @@ import os
 import sys
 import requests
 import feedparser
+from urllib.parse import quote
 
 output_dir = os.path.join(os.path.dirname(__file__), "json")
 output_file = os.path.join(output_dir, "ensonhaber.json")
 
 os.makedirs(output_dir, exist_ok=True)
 
-# Orijinal RSS adresi korundu
+# Orijinal RSS adresiniz korundu
 target_rss_url = "https://ensonhaber.com"
 
 print("GitHub Actions için RSS koruması tünellenerek aşılıyor...")
 
-# DÜZELTME: Parametrelerin düzgün iletilmesi için araya "?" eklendi
-proxy_url = f"https://scrape.do{target_rss_url}"
+# DÜZELTME: URL parametresi güvenli bir şekilde encode edilerek araya "?" eklendi
+proxy_url = f"https://scrape.do{quote(target_rss_url)}"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -23,7 +24,7 @@ headers = {
 
 try:
     # İstek tünel proxy üzerinden RSS adresine gönderiliyor
-    response = requests.get(proxy_url, headers=headers, timeout=20)
+    response = requests.get(proxy_url, headers=headers, timeout=25)
     
     if response.status_code != 200:
         print(f"Proxy bağlantı hatası. Durum kodu: {response.status_code}")
