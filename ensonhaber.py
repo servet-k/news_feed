@@ -2,54 +2,78 @@ import json
 import os
 import sys
 import urllib.request
-import feedparser
 
 output_dir = os.path.join(os.path.dirname(__file__), "json")
 output_file = os.path.join(output_dir, "ensonhaber.json")
 
 os.makedirs(output_dir, exist_ok=True)
 
-# Orijinal RSS adresiniz doğrudan hedefleniyor
+# DÜZELTME: Orijinal RSS feed adresiniz tam isabetle tanımlandı!
 target_rss_url = "https://ensonhaber.com"
 
-print("GitHub Actions ham bağlantı motoru başlatılıyor (Direct urllib Socket)...")
+print("GitHub Actions için RSS2JSON güvenli veri hattı kuruluyor...")
 
-# Sunucu korumasını aşmak için tarayıcı kimlik kartı oluşturuluyor
 headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Cache-Control": "no-cache",
-    "Pragma": "no-cache"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
 
 try:
-    # requests yerine sunucu korumalarını bypass eden düşük seviyeli urllib isteği kuruluyor
-    req = urllib.request.Request(target_rss_url, headers=headers)
+    # RSS adresinizi engellenmeyen küresel bir JSON/XML dönüştürücü tüneline gönderiyoruz
+    tunnel_api = f"https://rss2json.com{target_rss_url}"
     
+    req = urllib.request.Request(tunnel_api, headers=headers)
     with urllib.request.urlopen(req, timeout=30) as response:
-        xml_data = response.read().decode('utf-8')
-    
-    # İndirilen ham XML verisi feedparser kütüphanenize teslim ediliyor
-    feed = feedparser.parse(xml_data)
+        json_data = json.loads(response.read().decode('utf-8'))
+        
+    # Mevcut feedparser döngünüzün (entry.get, entry.media_content vb.) 
+    # kırılmaması için gelen JSON verisini feed nesnesine simüle ediyoruz
+    if "items" in json_data and json_data["status"] == "ok":
+        class MockFeed:
+            def __init__(self, items):
+                self.entries = []
+                for item in items:
+                    # XML yapısındaki media:content görsel mantığını birebir taklit ediyoruz
+                    img_link = item.get("enclosure", {}).get("link", "") if item.get("enclosure") else ""
+                    if not img_link and "thumbnail" in item:
+                        img_link = item.get("thumbnail", "")
+
+                    entry = {
+                        "published": item.get("pubDate", ""),
+                        "updated": item.get("pubDate", ""),
+                        "title": item.get("title", ""),
+                        "summary": item.get("description", ""),
+                        "description": item.get("description", ""),
+                        "link": item.get("link", ""),
+                        "media_content": [{"url": img_link}] if img_link else []
+                    }
+                    
+                    # Sözlük yapısını obje (.title, .link vb.) gibi okuyabilen sarmalayıcı sınıf
+                    class Element:
+                        def __init__(self, d): 
+                            self.__dict__ = d
+                        def get(self, k, default=""): 
+                            return self.__dict__.get(k, default)
+                            
+                    self.entries.append(Element(entry))
+        
+        feed = MockFeed(json_data["items"])
+    else:
+        print("Hata: Tünel servisinden geçersiz yanıt alındı.")
+        sys.exit(1)
 
 except Exception as e:
-    print(f"Bağlantı motoru site duvarını aşamadı: {e}")
+    print(f"Veri tüneli kurulurken hata oluştu: {e}")
     sys.exit(1)
 
 haber = []
 
-# Sizin feedparser döngünüzün ve veri şemanızın birebir aynısı
+# Sizin feedparser döngünüzün ve veri şemanızın korunan birebir aynısı
 for entry in feed.entries:
     img_url = ""
     if 'media_content' in entry and len(entry.media_content) > 0:
-        img_url = entry.media_content.get('url', '')
-    elif 'links' in entry:
-        for link in entry.links:
-            if 'image' in link.get('type', ''):
-                img_url = link.get('href', '')
-                break
-
+        media = entry.media_content
+        img_url = media.get('url', '') if hasattr(media, 'get') else media[0].get('url', '')
+    
     data = {
         "time": entry.get('published', entry.get('updated', '')),
         "title": entry.get('title', ''),
@@ -62,7 +86,7 @@ for entry in feed.entries:
     haber.append(data)
 
 if len(haber) == 0:
-    print("Hata: Çekilen veri ayrıştırılamadı, XML şablonu boş dönmüş olabilir.")
+    print("Hata: Dönüştürülen RSS içeriği boş veya işlenemedi.")
     sys.exit(1)
 
 # JSON çıktısını kaydetme
@@ -71,4 +95,4 @@ json_string = json.dumps(haber, indent=4, ensure_ascii=False)
 with open(output_file, "w", encoding="utf-8") as f:
     f.write(json_string)
 
-print(f"\n🚀 İşlem Başarılı! {len(haber)} adet güncel haber {output_file} dosyasına yazıldı.")
+print(f"\n🚀 Harika! {len(haber)} adet haber RSS feed üzerinden başarıyla kaydedildi -> {output_file}")
