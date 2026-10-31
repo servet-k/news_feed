@@ -12,8 +12,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10' # Hataları önlemek için daha genel bir sürüm tanımı yapıldı
-          cache: 'pip' # Bağımlılıkların her seferinde sıfırdan kurulmasını engeller, hızlandırır
+          python-version: '3.10' # Python kurulum hatasını çözen genel sürüm
 
       - name: Install Python dependencies
         run: |
@@ -33,7 +32,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18' # Netlify ile uyumlu
-          cache: 'npm' # Node modüllerini önbelleğe alır
 
       - name: Install Node.js dependencies
         run: npm install
