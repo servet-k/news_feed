@@ -9,37 +9,34 @@ output_file = os.path.join(output_dir, "ensonhaber.json")
 
 os.makedirs(output_dir, exist_ok=True)
 
-# Orijinal ve doğru RSS besleme adresiniz parametre olarak korundu
-target_rss_url = "https://www.ensonhaber.com/rss/ensonhaber.xml"
+# ÇÖZÜM: Sizin oluşturduğunuz engelsiz resmi Google FeedBurner adresi!
+my_feedburner_url = "https://feeds.feedburner.com/ensonhaber/xk7EWkSI4r8"
 
-print("GitHub Actions IP engeli Google FeedBurner Tüneli ile aşılıyor...")
-
-# ÇÖZÜM: İsteği doğrudan Ensonhaber'e değil, Google'ın resmi RSS önbellek motoruna atıyoruz!
-# Bu sayede Ensonhaber isteğin GitHub'dan geldiğini göremez ve dolu XML verisi teslim alınır.
-google_feed_burner = f"https://feedburner.com"
+print("Oluşturulan FeedBurner proxy hattı üzerinden haber akışı senkronize ediliyor...")
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
 
 try:
-    # GitHub'ın asla engellemediği Google altyapısına güvenli bir ham bağlantı açıyoruz
-    req = urllib.request.Request(google_feed_burner, headers=headers)
+    # GitHub Actions'ın engellenmediği Google altyapısına doğrudan istek açıyoruz
+    req = urllib.request.Request(my_feedburner_url, headers=headers)
     with urllib.request.urlopen(req, timeout=25) as response:
         xml_data = response.read().decode('utf-8')
     
-    # İndirilen ham XML verisini mevcut feedparser kütüphanenize teslim ediyoruz
+    # Gelen temiz ve dolu XML verisi orijinal feedparser kütüphanenize teslim ediliyor
     feed = feedparser.parse(xml_data)
 
 except Exception as e:
-    print(f"Google tünel motoruna bağlanılamadı: {e}")
+    print(f"FeedBurner proxy bağlantı katmanında hata oluştu: {e}")
     sys.exit(1)
 
 haber = []
 
-# Sizin feedparser döngünüzün ve veri şemanızın birebir aynısı (Hiçbir ön yüz yapınız kırılmaz)
+# Sizin feedparser döngünüzün ve veri şemanızın birebir özgün hali (Hiçbir yapı bozulmadı)
 for entry in feed.entries:
     img_url = ""
+    # XML dosyasındaki <media:content url="..."> görsel bağını tam isabet yakalıyoruz
     if 'media_content' in entry and len(entry.media_content) > 0:
         img_url = entry.media_content.get('url', '')
     elif 'links' in entry:
@@ -56,17 +53,17 @@ for entry in feed.entries:
         "img": img_url
     }
     
-    print(f"Başarıyla Çekildi: {data['title']}")
+    print(f"Başarıyla İşlendi: {data['title']}")
     haber.append(data)
 
 if len(haber) == 0:
-    print("Hata: Google önbellek havuzundan veri ayrıştırılamadı.")
+    print("Hata: Çekilen haber listesi boş döndü.")
     sys.exit(1)
 
-# Mevcut JSON çıktı yapınızla birebir aynı şekilde kaydetme
+# JSON çıktısını tam istediğiniz şablonda kaydetme
 json_string = json.dumps(haber, indent=4, ensure_ascii=False)
 
 with open(output_file, "w", encoding="utf-8") as f:
     f.write(json_string)
 
-print(f"\n🚀 Muhteşem! {len(haber)} adet haber Google tüneli üzerinden başarıyla senkronize edildi -> {output_file}")
+print(f"\n🚀 Muhteşem! {len(haber)} adet güncel haber yeni tüneliniz üzerinden başarıyla kaydedildi -> {output_file}")
