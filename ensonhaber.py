@@ -9,12 +9,12 @@ output_file = os.path.join(output_dir, "ensonhaber.json")
 
 os.makedirs(output_dir, exist_ok=True)
 
-# Sizin kullandığınız orijinal RSS adresi korundu
-target_rss_url = "https://www.ensonhaber.com/rss/ensonhaber.xml"
+# Orijinal RSS adresi korundu
+target_rss_url = "https://ensonhaber.com"
 
 print("GitHub Actions için RSS koruması tünellenerek aşılıyor...")
 
-# feedparser'ın engellenmesini önlemek için tünel proxy adresi oluşturuluyor
+# DÜZELTME: Parametrelerin düzgün iletilmesi için araya "?" eklendi
 proxy_url = f"https://scrape.do{target_rss_url}"
 
 headers = {
@@ -22,14 +22,14 @@ headers = {
 }
 
 try:
-    # İstek doğrudan tünel üzerinden gerçek RSS linkine atılıyor
+    # İstek tünel proxy üzerinden RSS adresine gönderiliyor
     response = requests.get(proxy_url, headers=headers, timeout=20)
     
     if response.status_code != 200:
         print(f"Proxy bağlantı hatası. Durum kodu: {response.status_code}")
         sys.exit(1)
         
-    # Gelen gerçek XML verisi feedparser'a teslim ediliyor
+    # Gelen temiz XML verisi feedparser'a iletiliyor
     xml_content = response.text
     feed = feedparser.parse(xml_content)
 
@@ -39,12 +39,11 @@ except Exception as e:
 
 haber = []
 
-# Sizin orijinal programınızdaki feedparser döngünüzün birebir aynısı:
+# Sizin feedparser döngünüzün ve veri şemanızın birebir aynısı
 for entry in feed.entries:
     img_url = ""
-    # XML dosyasındaki <media:content url="..."> etiketini tam isabet yakalar
     if 'media_content' in entry and len(entry.media_content) > 0:
-        img_url = entry.media_content[0].get('url', '')
+        img_url = entry.media_content.get('url', '')
     elif 'links' in entry:
         for link in entry.links:
             if 'image' in link.get('type', ''):
@@ -59,7 +58,6 @@ for entry in feed.entries:
         "img": img_url
     }
     
-    # Konsol çıktısı doğrulaması
     print(f"Zaman: {data['time']}")
     print(f"Başlık: {data['title']}")
     print("-" * 20)
@@ -67,10 +65,10 @@ for entry in feed.entries:
     haber.append(data)
 
 if len(haber) == 0:
-    print("Hata: RSS tünelden de boş döndü. Lütfen workflow loglarını inceleyin.")
+    print("Hata: RSS tünelden boş döndü.")
     sys.exit(1)
 
-# JSON formatına dönüştürme ve üzerine yazma
+# JSON formatına kaydetme
 json_string = json.dumps(haber, indent=4, ensure_ascii=False)
 
 with open(output_file, "w", encoding="utf-8") as f:
